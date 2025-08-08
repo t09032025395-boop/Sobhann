@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>صفحه سبحان</title>
+<style>
+  body {
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #121212;
+    color: #eee;
+    direction: rtl;
+    padding: 20px 20px 80px 20px; /* padding پایین بیشتر برای اسکرول */
+    min-height: 120vh; /* حداقل ارتفاع صفحه بیشتر برای اسکرول */
+  }
+  h1 {
+    font-size: 3em;
+    font-weight: 900;
+    color: #ff4444;
+    margin-bottom: 20px;
+  }
+  .image-container {
+    border: 4px solid #4CAF50; /* کادر سبز */
+    display: inline-block;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 200px; /* محدود کردن عرض به 200 پیکسل */
+    height: auto;
+  }
+  .image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .bar-container {
+    margin-bottom: 20px;
+  }
+  .bar-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .bar {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+  }
+  .bar-fill {
+    height: 100%;
+    background-color: #ff4444;
+    width: 0;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+  }
+  .info {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+  .typing {
+    border-right: 2px solid #ff4444;
+    white-space: pre-wrap;
+    font-size: 1.1em;
+    max-width: 600px;
+    line-height: 1.5em;
+    min-height: 100px;
+    margin-bottom: 40px;
+  }
+  .footer-title {
+    font-size: 4em;
+    font-weight: 900;
+    color: #ff4444;
+    text-align: center;
+    margin-top: 80px;
+  }
+</style>
+</head>
+<body>
+
+<h1>سبحان مادر جنده</h1>
+
+<div class="image-container">
+  <img src="https://s6.uupload.ir/files/img_20250808_192951_mq5l.jpg" alt="عکس سبحان" />
+</div>
+
+<div class="bar-container">
+  <div class="bar-label">مادر جندگی: 95%</div>
+  <div class="bar"><div class="bar-fill" data-width="95%"></div></div>
+</div>
+<div class="bar-container">
+  <div class="bar-label">خارکصه بازی: 82%</div>
+  <div class="bar"><div class="bar-fill" data-width="82%"></div></div>
+</div>
+<div class="bar-container">
+  <div class="bar-label">شعور: 1%</div>
+  <div class="bar"><div class="bar-fill" data-width="1%"></div></div>
+</div>
+<div class="bar-container">
+  <div class="bar-label">اوب: 100%</div>
+  <div class="bar"><div class="bar-fill" data-width="100%"></div></div>
+</div>
+
+<div class="info">
+  <div>from Afghanistan</div>
+  <div>age 15</div>
+</div>
+
+<div class="typing" id="typing-text"></div>
+
+<div class="footer-title">سبحان کص ننه</div>
+
+<script>
+  // انیمیشن نوارهای درصد
+  window.onload = () => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      setTimeout(() => {
+        bar.style.width = width;
+      }, 300);
+    });
+
+    // متن تایپ شونده
+    const text = `سبحان مادر جنده ای که در شهر خود همتا ندارد
+این فرد یکی از بزرگترین دارنده گان مادره زیبا هست
+این فرد مادری دارد که با پسر عموی سبحان رابطه برقرار میکند
+و آنها در طبقه پنجم در سرو ۴ زندگی میکند که این محل را مادر او به مکان تبدیل کرده است`;
+
+    let i = 0;
+    const typingElement = document.getElementById('typing-text');
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      } else {
+        typingElement.style.borderRight = 'none';
+      }
+    }
+    typeWriter();
+  };
+</script>
+</body>
+</html>
